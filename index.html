@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Musik Auto Play</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#000000,#1a0033,#330066);
+font-family:Arial, sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.box{
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:380px;
+backdrop-filter:blur(8px);
+box-shadow:0 0 20px rgba(255,255,255,0.1);
+animation:fade 1s ease;
+}
+
+h1{
+font-size:28px;
+margin-bottom:10px;
+}
+
+p{
+font-size:15px;
+opacity:0.8;
+margin-bottom:20px;
+}
+
+button{
+padding:12px 25px;
+margin:6px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.play{background:#00c853;color:white;}
+.stop{background:#f44336;color:white;}
+.repeat{background:#ff9800;color:white;}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h1>🎵 Welcome 🎵</h1>
+<p>Klik tombol agar musik diputar otomatis</p>
+
+<button class="play" onclick="playMusic()">▶ Play</button>
+<button class="repeat" onclick="repeatMusic()">🔁 Ulang</button>
+<button class="stop" onclick="stopMusic()">⏹ Stop</button>
+</div>
+
+<audio id="musik" loop>
+<source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let lagu = document.getElementById("musik");
+
+function playMusic(){
+lagu.play();
+}
+
+function repeatMusic(){
+lagu.currentTime = 0;
+lagu.play();
+}
+
+function stopMusic(){
+lagu.pause();
+lagu.currentTime = 0;
+}
+</script>
+
+</body>
+</html>
